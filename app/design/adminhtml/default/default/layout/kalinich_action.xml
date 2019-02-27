@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_action_index>
+        <reference name="content">
+            <block type="kalinich_action/adminhtml_action" name="action.grid"/>
+        </reference>
+    </adminhtml_action_index>
+
+    <adminhtml_action_edit>
+        <reference name="left">
+            <block type="kalinich_action/adminhtml_action_edit_tabs" name="action_edit_tabs">
+                <block type="kalinich_action/adminhtml_action_edit_tab_main" name="kalinich_action_edit_tab_main" />
+                <action method="addTab"><name>main_section</name><block>kalinich_action_edit_tab_main</block></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="kalinich_action/adminhtml_action_edit" name="action.edit"></block>
+        </reference>
+    </adminhtml_action_edit>
+
+    <adminhtml_action_categorytab>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="kalinich_action/adminhtml_action_edit_tab_category" name="kalinich_action_edit_tab_category" />
+            <block type="adminhtml/widget_grid_serializer" name="category_grid_serializer">
+                <reference name="category_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>kalinich_action_edit_tab_category</grid_block_name>
+                        <data_callback>getSelectedCategory</data_callback>
+                        <hidden_input_name>category_ids</hidden_input_name>
+                        <reload_param_name>category_ids_reload</reload_param_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_action_categorytab>
+
+    <adminhtml_action_categorygrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="kalinich_action/adminhtml_action_edit_tab_category" name="kalinich_action_edit_tab_category" />
+        </block>
+    </adminhtml_action_categorygrid>
+</layout>

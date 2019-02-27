@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Kalinich_Action>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Kalinich_Action>
+    </modules>
+</config>

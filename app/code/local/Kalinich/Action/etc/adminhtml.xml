@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <menu>
+        <kalinich_action module="kalinich_action">
+            <title>Kalinich Action</title>
+            <sort_order>55</sort_order>
+            <action>adminhtml/action</action>
+        </kalinich_action>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <kalinich_action>
+                        <title>Kalinich Action</title>
+                    </kalinich_action>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

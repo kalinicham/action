@@ -1,0 +1,49 @@
+<?php $_actionCollection = $this->getDefaultActionCollection();
+
+//$_helper = $this->helper('catalog/output');
+?>
+
+
+<?php echo $this->getToolbarHtml() ?>
+
+<?php $_collectionSize = $_actionCollection->count() ?>
+<?php $_columnCount = $this->getColumnCount(); ?>
+
+<div class="category-products">
+    <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+        <?php $i=0; foreach ($_actionCollection as $_action): ?>
+        <?php /*if ($i++%$_columnCount==0): ?>
+                <?php endif*/ ?>
+
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+
+                <a href="<?php echo Mage::getBaseUrl() . 'action/view/?id=' . $_action->getId(); ?>" title="<?php echo $_action->getName(); ?>" class="product-image">
+                    <?php $_imgSize = 200; ?>
+                    <img id="action-collection-image-<?php echo $_action->getId(); ?>"
+                         src="<?php echo $_action->getImage()?>" style="height: 200px; width: 200px; "/>
+                </a>
+                <div class="product-info">
+                    <h2 class="product-name"><a href="<?php echo Mage::getBaseUrl() . 'action/view/?id=' . $_action->getId(); ?>" title="<?php echo $_action->getName(); ?>"><?php echo $_action->getName(); ?></a></h2>
+                    <h3><?php echo "Start: ". $_action->getStartDatetime(); ?></h3>
+                    <h3><?php if (!is_empty_date($_action->getEndDatetime())) {
+                            echo "End: ". $_action->getEndDatetime();
+                        } ?>
+                    </h3>
+                    <div style="text-align: left;"><?php if (!isset($_action->getShortDescription)) {
+                            echo $_action->getShortDescription();
+                        } ?>
+                    </div>
+                </div>
+
+
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+
+</div>
