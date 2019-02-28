@@ -18,12 +18,13 @@ $collection = $this->getCollectionProducts();
                 <?php /*if ($i++%$_columnCount==0): ?>
                 <?php endif*/ ?>
 
-                <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <li class="item<?php //if(($i-1)%$_columnCount==0): ?> first<?php //elseif($i%$_columnCount==0): ?> last<?php //endif; ?>">
 
-                    <a href="<?php // echo Mage::getBaseUrl() . 'action/view/?id=' . $_action->getId(); ?>" title="<?php // echo $_action->getName(); ?>" class="product-image">
+                    <a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($product, 'small_image'), null, true) ?>" class="product-image">
                         <?php $_imgSize = 200; ?>
                         <img id="action-collection-image-<?php // echo $_action->getId(); ?>"
-                             src="<?php // echo $product->getImage()?>" style="height: 200px; width: 200px; "/>
+                             src="<?php echo $this->helper('catalog/image')->init($product, 'small_image')->resize($_imgSize);?>"
+                             style="margin-left: auto;margin-right: auto;height: 200px;width: 200px;"/>
                     </a>
                     <div class="product-info">
                         <h2 class="product-name">
