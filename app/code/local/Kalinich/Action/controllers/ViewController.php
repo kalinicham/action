@@ -5,6 +5,10 @@ class Kalinich_Action_ViewController extends Mage_Core_Controller_Front_Action
     public function indexAction(){
         $id = $this->getRequest()->getParam('id');
         if ($id) {
+            $model = Mage::getModel('kalinich_action/post')->load($id);
+
+            Mage::register('action_view', $model);
+
             $this->loadLayout();
             $this->renderLayout();
             var_dump(Mage::helper('core')->getLayout()->getUpdate()->getHandles());

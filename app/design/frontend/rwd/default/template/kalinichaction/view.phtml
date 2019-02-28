@@ -1,1 +1,16 @@
-<h5>Hello</h5>
+<?php $action = $this->getAction() ?>
+<div>
+    <h2><?php echo $action->getName() . ' - ' . $action->getShortDescription(); ?></h2>
+    <div>
+        <img
+                src="<?php echo $action->getImage()?>"
+                alt="<?php echo $action->getName()?>"
+                style="height: 300px; width: 300px; float:left; margin: 15px 15px 15px 0; "/>
+        <?php echo $action->getDescription() ?>
+    </div>
+    <div>
+
+
+
+    </div>
+</div>
