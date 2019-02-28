@@ -1,4 +1,5 @@
 <layout version="1.0.1">
+
 <kalinich_action_index_index>
     <remove name="left"/>
     <reference name="root">
@@ -32,4 +33,16 @@
 
     </reference>
 </kalinich_action_index_index>
+
+<kalinich_action_view_index>
+    <remove name="left"/>
+    <remove name="right"/>
+    <reference name="root">
+        <action method="setTemplate"><template>page/1column.phtml</template></action>
+    </reference>
+    <reference name="content">
+        <block type="kalinich_action/action" name="kalinich_action_view" template="kalinichaction/view.phtml">
+        </block>
+    </reference>
+</kalinich_action_view_index>
 </layout>
