@@ -164,3 +164,4 @@
 /app/etc/modules/Mage_Captcha.xml
 /app/etc/modules/Mage_ConfigurableSwatches.xml
 !/.gitignore
+/app/design/adminhtml/default/default/layout/tsg_hellomagento.xml
