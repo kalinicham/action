@@ -15,7 +15,7 @@ class Kalinich_Action_Block_Action extends Mage_Catalog_Block_Product_Abstract {
         public function getIdProductCollection() {
             $id = $this->getIdAction();
             $collection = Mage::getModel('kalinich_action/post_action')
-                ->getCollection()->addFieldToFilted('action_id',$id);
+                ->getCollection()->addFieldToFilter('action_id',$id);
             foreach ($collection as $item) {
                 $idProductCollection[] = $item->getProductId();
             }
@@ -23,8 +23,10 @@ class Kalinich_Action_Block_Action extends Mage_Catalog_Block_Product_Abstract {
         }
 
         public function getCollectionProducts() {
-            $products = $this->getIdProductCollection();
-            $collection = Mage::getModel();
+            $productsId = $this->getIdProductCollection();
+            $collection = Mage::getModel('core/product')->getCollection()
+                ->addFieldToFilter('entyti_id',array('in' => $productsId));
+            return $collection;
         }
 
 }
