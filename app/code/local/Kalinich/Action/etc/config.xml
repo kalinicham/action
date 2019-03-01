@@ -18,7 +18,7 @@
         <layout>
             <updates>
                 <kalinich_action>
-                    <file>action.xml</file>
+                    <file>kalinich_action.xml</file>
                 </kalinich_action>
             </updates>
         </layout>
