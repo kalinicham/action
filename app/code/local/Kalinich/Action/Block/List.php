@@ -1,9 +1,27 @@
 <?php
 
-class Kalinich_Action_Block_List extends Mage_Catalog_Block_Product_List {
+class Kalinich_Action_Block_List extends Mage_Core_Block_Template {
 
-        public function getDefaultActionCollection(){
-            $collection = Mage ::getModel('kalinich_action/post')->getCollection();
-        return $collection;
-        }
+    public function __construct()
+    {
+        parent::__construct();
+        $collection = Mage::getModel('kalinich_action/post')->getCollection();
+        $this->setCollection($collection);
+    }
+    protected function _prepareLayout()
+    {
+        parent::_prepareLayout();
+        $pager = $this->getLayout()->createBlock('page/html_pager', 'custom.pager');
+        $pager->setAvailableLimit(array(4=>4,8=>8,16=>16,'all'=>'all'));
+        $pager->setCollection($this->getCollection());
+        $this->setChild('pager', $pager);
+        $this->getCollection()->load();
+        return $this;
+    }
+    public function getToolbarHtml()
+    {
+        return $this->getChildHtml('pager');
+    }
+
+
 }
