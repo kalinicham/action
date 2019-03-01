@@ -43,7 +43,7 @@ class Kalinich_Action_Block_Adminhtml_Action_Edit_Tab_Category extends Mage_Admi
 
     public function _prepareCollection() {
         $collection = Mage::getModel('catalog/product')->getCollection()
-            ->addAttributeToSelect(Mage::getSingleton('catalog/config')->getProductAttributes());
+            ->addAttributeToSelect('*');
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -84,6 +84,22 @@ class Kalinich_Action_Block_Adminhtml_Action_Edit_Tab_Category extends Mage_Admi
             'index'     => 'sku',
             'width'     => '255'
         ));
+
+        $this->addColumn('visibility', array(
+            'header'    => Mage::helper('kalinich_action')->__('Visibility'),
+            'align'     => 'left',
+            'index'     => 'visibility',
+            'width'     => '255',
+            'type'      => 'options',
+            'options'   => array(
+                1       => Mage::helper('cms')->__('NOT_VISIBLE'),
+                2       => Mage::helper('cms')->__('IN_CATALOG'),
+                3       => Mage::helper('cms')->__('IN_SEARCH'),
+                4       => Mage::helper('cms')->__('BOTH'),
+            ),
+        ));
+
+
         $this->addColumn('price', array(
             'header'    => Mage::helper('kalinich_action')->__('Price'),
             'align'     => 'left',
