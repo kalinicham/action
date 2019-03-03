@@ -29,7 +29,10 @@ class Kalinich_Action_Block_Action extends Mage_Catalog_Block_Product_Abstract {
                 ->addAttributeToSelect('*')
                 ->addStoreFilter($storeId)
                 ->addAttributeToFilter('status', Mage_Catalog_Model_Product_Status::STATUS_ENABLED)
-//                ->addFieldToFilter('visibility', Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH)
+                ->addFieldToFilter('visibility', array('in' => array(
+                    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG,
+                    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_SEARCH,
+                    Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH)))
                 ->addFieldToFilter('entity_id',array('in' => $productsId));
             return $collection;
         }

@@ -5,7 +5,10 @@ class Kalinich_Action_Block_List extends Mage_Core_Block_Template {
     public function __construct()
     {
         parent::__construct();
-        $collection = Mage::getModel('kalinich_action/post')->getCollection();
+        $collection = Mage::getModel('kalinich_action/post')->getCollection()
+            ->addFieldToFilter('is_active','1')
+            ->addFieldToFilter('status','1')
+            ->setOrder('start_datetime','DESC');
         $this->setCollection($collection);
     }
     protected function _prepareLayout()
