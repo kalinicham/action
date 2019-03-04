@@ -3,7 +3,7 @@
 class Kalinich_Action_Model_Cron
 {
 
-    public function action_update_status()
+    public function actionUpDateStatus()
     {
         $actionsCollection = Mage::getModel('kalinich_action/post_action')->getCollection();
         foreach ($actionsCollection as $action) {

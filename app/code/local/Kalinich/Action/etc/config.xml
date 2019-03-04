@@ -5,6 +5,18 @@
             <version>1.0.2</version>
         </Kalinich_Action>
     </modules>
+    <crontab>
+        <jobs>
+            <kalinich_action_cron>
+                <schedule>
+                    <cron_expr>*/1 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>kalinich_action/cron::actionUpDateStatus</model>
+                </run>
+            </kalinich_action_cron>
+        </jobs>
+    </crontab>
     <frontend>
         <routers>
             <kalinich_action>
