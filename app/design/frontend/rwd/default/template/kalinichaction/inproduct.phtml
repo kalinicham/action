@@ -1,1 +1,35 @@
-<?php ?>
+<?php $_actionCollection = $this->getCollection();
+// $_collectionSize = $_actionCollection->count()
+$_columnCount = $this->getColumnCount(); ?>
+
+<div class="category-products">
+    <ul class="products-grid products-grid--max-<?php echo $_columnCount; ?>-col">
+        <?php $i=0; foreach ($_actionCollection as $_action): ?>
+            <?php //if ($i++%$_columnCount==0): ?>
+            <?php // endif ?>
+
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+                <div class="product-info">
+                    <h2 class="product-name"><a href="<?php echo Mage::getBaseUrl() . 'action/view/?id=' . $_action->getId(); ?>" title="<?php echo $_action->getName(); ?>"><?php echo $_action->getName(); ?></a></h2>
+                    <?php echo "Start: ". $_action->getStartDatetime(); ?><br/>
+                    <?php if (!is_empty_date($_action->getEndDatetime())) {
+                            echo "End: ". $_action->getEndDatetime();
+                        } ?>
+                    <div style="text-align: left;"><?php if (!isset($_action->getShortDescription)) {
+                            echo $_action->getShortDescription();
+                        } ?>
+                    </div>
+                </div>
+
+
+            </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+
+</div>

@@ -24,4 +24,14 @@
         </block>
     </reference>
 </kalinich_action_view_index>
+
+<catalog_product_view>
+    <reference name="content">
+        <block type="kalinich_action/inProduct" name="kalinich_action_inproduct" template="kalinichaction/inproduct.phtml">
+            <action method="setColumnCount"><count>5</count></action>
+        </block>
+    </reference>
+</catalog_product_view>
+
+
 </layout>
